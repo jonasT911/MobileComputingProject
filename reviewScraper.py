@@ -2,6 +2,7 @@ import csv
 from google_play_scraper import Sort, reviews, app
 import os
 import sys
+import csvTools
 
 outputFolder = "outputs"
 
