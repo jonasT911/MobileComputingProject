@@ -37,20 +37,23 @@ for appAddr in apps:
 		reviewsPulled=0
 		result = AppStore(country="us", app_name=appAddr)
 		with open(str(outputFolder)+"/"+str(appAddr)+'.csv', 'w', newline='', encoding="utf-8") as file:
+			
+			writer = csv.writer(file)
+			field = ["Score", "Date", "Content","Title"]
+			writer.writerow(field)
 			while(reviewsPulled<numReviews):
+				print(str(reviewsPulled)+" out of "+str(numReviews))
 				result.review(how_many=100)
-				time.sleep(1)
-				writer = csv.writer(file)
-				if(reviewsPulled==0):
-					field = ["Score", "Date", "Content","Title"]
-					writer.writerow(field)
+				reviewsPulled+=len(result.reviews)
+				print(reviewsPulled)
 				for rev in result.reviews:
 					
 					#Removes line breaks from title and review to avoid processing errors
 					writer.writerow([rev['rating'], rev['date'],rev['review'].replace("\n", " "),rev['title'].replace("\n", " ")])
-				reviewsPulled+=100
+				
    
 		
 	except Exception as e:
 		print("ERROR")
 		print(e)
+		time.sleep(5)
