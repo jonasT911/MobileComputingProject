@@ -11,7 +11,7 @@ import time
 #print(minecraft.reviews_count)
 
 
-outputFolder = "outputs_Final"
+outputFolder = "OverNightOutput"
 
 numReviews=2000
 
@@ -41,18 +41,17 @@ for appAddr in apps:
 			writer = csv.writer(file)
 			field = ["Score", "Date", "Content","Title"]
 			writer.writerow(field)
-			while(reviewsPulled<numReviews):
-				print(str(reviewsPulled)+" out of "+str(numReviews))
-				result.review(how_many=1)
-				time.sleep(2)
-				reviewsPulled+=len(result.reviews)
-				print(reviewsPulled)
-				for rev in result.reviews:
-					
-					#Removes line breaks from title and review to avoid processing errors
-					writer.writerow([rev['rating'], rev['date'],rev['review'].replace("\n", " "),rev['title'].replace("\n", " ")])
+			while(len(result.reviews)<numReviews):
+				print(str(len(result.reviews))+" out of "+str(numReviews))
+				result.review(how_many=20,sleep = 15)
+
+
+			for rev in result.reviews:
 				
-   
+				#Removes line breaks from title and review to avoid processing errors
+				writer.writerow([rev['rating'], rev['date'],rev['review'].replace("\n", " "),rev['title'].replace("\n", " ")])
+				
+
 		
 	except Exception as e:
 		print("ERROR")
