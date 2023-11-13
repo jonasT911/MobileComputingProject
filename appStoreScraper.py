@@ -1,3 +1,4 @@
+import datetime
 from app_store_scraper import AppStore
 import os
 import sys
@@ -43,8 +44,9 @@ for appAddr in apps:
 			writer.writerow(field)
 			while(len(result.reviews)<numReviews):
 				print(str(len(result.reviews))+" out of "+str(numReviews))
-				result.review(how_many=100,sleep = 5)
-				time.sleep(5)
+				result.review(how_many=100,after = datetime.datetime(2017, 1, 1)
+,sleep = 1)
+				time.sleep(1)
 
 			for rev in result.reviews:
 				
