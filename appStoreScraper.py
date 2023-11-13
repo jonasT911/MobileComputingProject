@@ -44,6 +44,7 @@ for appAddr in apps:
 			while(reviewsPulled<numReviews):
 				print(str(reviewsPulled)+" out of "+str(numReviews))
 				result.review(how_many=100)
+				time.sleep(2)
 				reviewsPulled+=len(result.reviews)
 				print(reviewsPulled)
 				for rev in result.reviews:

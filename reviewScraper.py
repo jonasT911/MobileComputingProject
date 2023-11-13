@@ -25,8 +25,8 @@ for appAddr in apps:
         appAddr,
         lang='en', # defaults to 'en'
         country='us', # defaults to 'us'
-        sort=NEWEST # defaults to Sort.NEWEST #Can use MOST_RELEVANT too #3 is high score
-        count=200, # defaults to 100
+        sort=Sort.NEWEST, # defaults to Sort.NEWEST #Can use MOST_RELEVANT too #3 is high score
+        count=100, # defaults to 100
         filter_score_with=None # defaults to None(means all score)
         )
 
