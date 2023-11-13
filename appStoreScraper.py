@@ -43,7 +43,7 @@ for appAddr in apps:
 			writer.writerow(field)
 			while(reviewsPulled<numReviews):
 				print(str(reviewsPulled)+" out of "+str(numReviews))
-				result.review(how_many=100)
+				result.review(how_many=1)
 				time.sleep(2)
 				reviewsPulled+=len(result.reviews)
 				print(reviewsPulled)
